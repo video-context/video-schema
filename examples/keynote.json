@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1",
+  "video_id": "vid_8f2c",
+  "duration": 1843.2,
+  "language": "en-US",
+  "summary": "Illustrative example: a product launch keynote for a v4 release.",
+  "media": {
+    "url": "https://cdn.example.com/launch-keynote.mp4",
+    "container": "mp4",
+    "video": { "codec": "h264", "width": 1920, "height": 1080, "fps": 30 },
+    "audio": { "codec": "aac", "channels": 2, "sample_rate": 48000 }
+  },
+  "chapters": [
+    { "start": 0, "end": 212.9, "title": "Opening" },
+    { "start": 212.9, "end": 1843.2, "title": "What is new in v4" }
+  ],
+  "scenes": [
+    { "start": 0, "end": 41.6, "label": "Cold open, city b-roll" },
+    { "start": 41.6, "end": 212.9, "label": "CEO on stage, intro" }
+  ],
+  "shots": [
+    { "start": 0, "end": 6.1 },
+    { "start": 6.1, "end": 14.8 },
+    { "start": 14.8, "end": 41.6 }
+  ],
+  "transcript": [
+    {
+      "start": 42.3,
+      "end": 45.9,
+      "speaker": "spk_0",
+      "text": "Welcome, everyone, to the v4 launch.",
+      "words": [
+        { "start": 42.3, "end": 42.9, "text": "Welcome," },
+        { "start": 42.9, "end": 43.6, "text": "everyone," },
+        { "start": 43.6, "end": 43.8, "text": "to" },
+        { "start": 43.8, "end": 44.0, "text": "the" },
+        { "start": 44.0, "end": 44.7, "text": "v4" },
+        { "start": 44.7, "end": 45.9, "text": "launch." }
+      ]
+    }
+  ],
+  "ocr": [{ "start": 88.4, "end": 93.0, "text": "Pro plan · $49/mo", "confidence": 0.97 }],
+  "labels": [{ "start": 41.6, "end": 212.9, "name": "stage", "category": "event", "confidence": 0.91 }],
+  "objects": [
+    {
+      "start": 41.6,
+      "end": 60.0,
+      "name": "person",
+      "track_id": "1",
+      "boxes": [
+        { "t": 41.6, "x": 0.31, "y": 0.12, "w": 0.28, "h": 0.83 },
+        { "t": 50.0, "x": 0.35, "y": 0.12, "w": 0.27, "h": 0.82 }
+      ]
+    }
+  ],
+  "logos": [{ "start": 120.0, "end": 126.5, "name": "Example Corp", "confidence": 0.88 }],
+  "keyframes": [0, 2, 4, 6.1],
+  "provenance": [
+    { "source": "ffmpeg", "tracks": ["shots", "keyframes"] },
+    { "source": "example-speech-model", "tracks": ["transcript"] }
+  ]
+}

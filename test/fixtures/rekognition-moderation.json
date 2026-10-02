@@ -1,0 +1,7 @@
+{
+  "JobStatus": "SUCCEEDED",
+  "ModerationLabels": [
+    { "Timestamp": 7000, "ModerationLabel": { "Confidence": 61.2, "Name": "Graphic Violence", "ParentName": "Violence" } },
+    { "Timestamp": 7500, "ModerationLabel": { "Confidence": 70.4, "Name": "Graphic Violence", "ParentName": "Violence" } }
+  ]
+}

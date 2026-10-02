@@ -1,0 +1,105 @@
+{
+  "name": "projects/123/locations/us-east1/operations/456",
+  "done": true,
+  "response": {
+    "@type": "type.googleapis.com/google.cloud.videointelligence.v1.AnnotateVideoResponse",
+    "annotationResults": [
+      {
+        "inputUri": "/demo-bucket/keynote.mp4",
+        "segment": { "startTimeOffset": "0s", "endTimeOffset": "12.500s" },
+        "shotAnnotations": [
+          { "startTimeOffset": "0s", "endTimeOffset": "4.200s" },
+          { "endTimeOffset": "12.500s", "startTimeOffset": "4.240s" }
+        ],
+        "segmentLabelAnnotations": [
+          {
+            "entity": { "entityId": "/m/01c8br", "description": "stage", "languageCode": "en-US" },
+            "categoryEntities": [{ "entityId": "/m/01n32", "description": "event", "languageCode": "en-US" }],
+            "segments": [{ "segment": { "startTimeOffset": "0s", "endTimeOffset": "12.500s" }, "confidence": 0.91 }]
+          }
+        ],
+        "frameLabelAnnotations": [
+          {
+            "entity": { "description": "microphone" },
+            "frames": [
+              { "timeOffset": "5s", "confidence": 0.7 },
+              { "timeOffset": "6s", "confidence": 0.8 },
+              { "timeOffset": "10s", "confidence": 0.75 }
+            ]
+          }
+        ],
+        "speechTranscriptions": [
+          {
+            "alternatives": [
+              {
+                "transcript": "Welcome to the launch",
+                "confidence": 0.94,
+                "words": [
+                  { "startTime": "0.400s", "endTime": "0.800s", "word": "Welcome" },
+                  { "startTime": "0.800s", "endTime": "0.900s", "word": "to" },
+                  { "startTime": "0.900s", "endTime": "1s", "word": "the" },
+                  { "startTime": "1s", "endTime": "1.600s", "word": "launch" }
+                ]
+              }
+            ],
+            "languageCode": "en-us"
+          },
+          {
+            "alternatives": [
+              {
+                "transcript": " thanks",
+                "confidence": 0.9,
+                "words": [{ "startTime": "5s", "endTime": "5.400s", "word": "thanks" }]
+              }
+            ],
+            "languageCode": "en-us"
+          },
+          {
+            "alternatives": [
+              {
+                "words": [
+                  { "startTime": "0.400s", "endTime": "0.800s", "word": "Welcome", "speakerTag": 1 },
+                  { "startTime": "0.800s", "endTime": "0.900s", "word": "to", "speakerTag": 1 },
+                  { "startTime": "0.900s", "endTime": "1s", "word": "the", "speakerTag": 1 },
+                  { "startTime": "1s", "endTime": "1.600s", "word": "launch", "speakerTag": 1 },
+                  { "startTime": "5s", "endTime": "5.400s", "word": "thanks", "speakerTag": 2 }
+                ]
+              }
+            ]
+          }
+        ],
+        "textAnnotations": [
+          {
+            "text": "PRO PLAN $49",
+            "segments": [{ "segment": { "startTimeOffset": "8.800s", "endTimeOffset": "11s" }, "confidence": 0.98 }]
+          }
+        ],
+        "objectAnnotations": [
+          {
+            "entity": { "entityId": "/m/01g317", "description": "person" },
+            "confidence": 0.88,
+            "trackId": "7",
+            "segment": { "startTimeOffset": "4.240s", "endTimeOffset": "12.500s" },
+            "frames": [
+              { "normalizedBoundingBox": { "left": 0.3, "top": 0.1, "right": 0.6, "bottom": 0.95 }, "timeOffset": "4.240s" },
+              { "normalizedBoundingBox": { "left": 0.32, "right": 0.62, "bottom": 0.9 }, "timeOffset": "5s" }
+            ]
+          }
+        ],
+        "logoRecognitionAnnotations": [
+          {
+            "entity": { "entityId": "/m/045c7b", "description": "Google" },
+            "tracks": [{ "segment": { "startTimeOffset": "2s", "endTimeOffset": "3.500s" }, "confidence": 0.83 }]
+          }
+        ],
+        "explicitAnnotation": {
+          "frames": [
+            { "timeOffset": "1s", "pornographyLikelihood": "VERY_UNLIKELY" },
+            { "timeOffset": "7s", "pornographyLikelihood": "POSSIBLE" },
+            { "timeOffset": "8s", "pornographyLikelihood": "POSSIBLE" }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "annotation_results": [
+    {
+      "input_uri": "/demo-bucket/keynote.mp4",
+      "segment": { "start_time_offset": {}, "end_time_offset": { "seconds": 12, "nanos": 500000000 } },
+      "shot_annotations": [
+        { "start_time_offset": {}, "end_time_offset": { "seconds": 4, "nanos": 200000000 } },
+        { "start_time_offset": { "seconds": 4, "nanos": 240000000 }, "end_time_offset": { "seconds": 12, "nanos": 500000000 } }
+      ],
+      "explicit_annotation": {
+        "frames": [{ "time_offset": { "seconds": 7 }, "pornography_likelihood": 4 }]
+      }
+    }
+  ]
+}

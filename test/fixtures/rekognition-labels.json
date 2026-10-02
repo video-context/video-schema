@@ -1,0 +1,10 @@
+{
+  "JobStatus": "SUCCEEDED",
+  "VideoMetadata": { "Codec": "h264", "DurationMillis": 12500, "Format": "QuickTime / MOV", "FrameRate": 29.97, "FrameHeight": 1080, "FrameWidth": 1920 },
+  "Labels": [
+    { "Timestamp": 4500, "Label": { "Name": "Person", "Confidence": 98.6, "Instances": [{ "BoundingBox": { "Width": 0.3, "Height": 0.85, "Left": 0.3, "Top": 0.1 }, "Confidence": 98.6 }], "Parents": [], "Categories": [{ "Name": "Person Description" }] } },
+    { "Timestamp": 5000, "Label": { "Name": "Person", "Confidence": 97.1, "Instances": [{ "BoundingBox": { "Width": 0.3, "Height": 0.8, "Left": 0.32, "Top": 0.1 }, "Confidence": 97.1 }], "Parents": [] } },
+    { "Timestamp": 9000, "Label": { "Name": "Stage", "Confidence": 80.0, "Instances": [], "Parents": [] } },
+    { "Timestamp": 0, "StartTimestampMillis": 0, "EndTimestampMillis": 12500, "DurationMillis": 12500, "Label": { "Name": "Crowd", "Confidence": 76.4, "Instances": [], "Parents": [{ "Name": "Person" }] } }
+  ]
+}

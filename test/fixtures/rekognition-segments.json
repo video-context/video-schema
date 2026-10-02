@@ -1,0 +1,13 @@
+{
+  "JobStatus": "SUCCEEDED",
+  "VideoMetadata": [
+    { "Codec": "h264", "DurationMillis": 12500, "Format": "QuickTime / MOV", "FrameRate": 29.97, "FrameHeight": 1080, "FrameWidth": 1920, "ColorRange": "LIMITED" }
+  ],
+  "AudioMetadata": [{ "Codec": "aac", "DurationMillis": 12500, "SampleRate": 48000, "NumberOfChannels": 2 }],
+  "Segments": [
+    { "Type": "TECHNICAL_CUE", "StartTimestampMillis": 0, "EndTimestampMillis": 500, "DurationMillis": 500, "TechnicalCueSegment": { "Type": "BlackFrames", "Confidence": 90.1 } },
+    { "Type": "SHOT", "StartTimestampMillis": 0, "EndTimestampMillis": 4200, "DurationMillis": 4200, "ShotSegment": { "Index": 0, "Confidence": 99.2 } },
+    { "Type": "SHOT", "StartTimestampMillis": 4240, "EndTimestampMillis": 12500, "DurationMillis": 8260, "ShotSegment": { "Index": 1, "Confidence": 97.5 } }
+  ],
+  "SelectedSegmentTypes": [{ "Type": "SHOT", "ModelVersion": "1.0" }]
+}

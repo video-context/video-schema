@@ -1,0 +1,277 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/video-context/video-schema/blob/main/schema/video-context.schema.json",
+  "title": "Video Context document",
+  "description": "One JSON document that describes one video: its media facts and timestamped tracks such as shots, scenes, a transcript, on-screen text, labels, objects, logos, chapters, and safety flags. All times are in seconds from the start of the video.",
+  "type": "object",
+  "required": ["schema_version"],
+  "properties": {
+    "schema_version": {
+      "description": "The version of this schema that the document uses.",
+      "const": "0.1"
+    },
+    "video_id": {
+      "description": "An identifier for the video. Any string that is unique in your system.",
+      "type": "string"
+    },
+    "duration": {
+      "description": "The length of the video in seconds.",
+      "type": "number",
+      "minimum": 0
+    },
+    "language": {
+      "description": "The main spoken language, as a BCP 47 tag such as en-US.",
+      "type": "string"
+    },
+    "summary": {
+      "description": "A short description of the full video.",
+      "type": "string"
+    },
+    "media": { "$ref": "#/$defs/media" },
+    "shots": {
+      "description": "The camera shots. A shot is a continuous run of frames between two cuts.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/shot" }
+    },
+    "scenes": {
+      "description": "Groups of shots that belong together, usually with a label.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/scene" }
+    },
+    "chapters": {
+      "description": "Large sections of the video, such as the chapters on a video page.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/chapter" }
+    },
+    "transcript": {
+      "description": "The speech in the video, as timed segments.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/transcript_segment" }
+    },
+    "ocr": {
+      "description": "Text that shows on screen, such as titles, prices, slides, and captions.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/text_item" }
+    },
+    "labels": {
+      "description": "Labels for what the video shows, such as 'beach' or 'football'.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/label" }
+    },
+    "objects": {
+      "description": "Objects and people in the frame, with optional bounding boxes.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/object_track" }
+    },
+    "logos": {
+      "description": "Brand logos in the frame.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/label" }
+    },
+    "safety": {
+      "description": "Content that can need a review, such as explicit or violent content.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/safety_flag" }
+    },
+    "keyframes": {
+      "description": "The times of the encoded keyframes (I-frames).",
+      "type": "array",
+      "items": { "type": "number", "minimum": 0 }
+    },
+    "provenance": {
+      "description": "Where each part of the document came from.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/provenance" }
+    },
+    "extensions": {
+      "description": "Data that this schema does not define. Put each source under its own key.",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "seconds": { "type": "number", "minimum": 0 },
+    "confidence": {
+      "description": "A score from 0 to 1.",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "span": {
+      "type": "object",
+      "required": ["start", "end"],
+      "properties": {
+        "start": { "$ref": "#/$defs/seconds" },
+        "end": { "$ref": "#/$defs/seconds" }
+      }
+    },
+    "media": {
+      "description": "Technical facts about the file.",
+      "type": "object",
+      "properties": {
+        "url": { "type": "string" },
+        "container": { "type": "string" },
+        "size_bytes": { "type": "integer", "minimum": 0 },
+        "bitrate": { "description": "Bits per second.", "type": "number", "minimum": 0 },
+        "video": {
+          "type": "object",
+          "properties": {
+            "codec": { "type": "string" },
+            "width": { "type": "integer", "minimum": 0 },
+            "height": { "type": "integer", "minimum": 0 },
+            "fps": { "type": "number", "minimum": 0 },
+            "rotation": { "type": "number" },
+            "pixel_format": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "audio": {
+          "type": "object",
+          "properties": {
+            "codec": { "type": "string" },
+            "channels": { "type": "integer", "minimum": 0 },
+            "sample_rate": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "shot": {
+      "allOf": [{ "$ref": "#/$defs/span" }],
+      "properties": {
+        "start": true,
+        "end": true,
+        "confidence": { "$ref": "#/$defs/confidence" }
+      },
+      "unevaluatedProperties": false
+    },
+    "scene": {
+      "allOf": [{ "$ref": "#/$defs/span" }],
+      "properties": {
+        "start": true,
+        "end": true,
+        "label": { "type": "string" },
+        "confidence": { "$ref": "#/$defs/confidence" }
+      },
+      "unevaluatedProperties": false
+    },
+    "chapter": {
+      "allOf": [{ "$ref": "#/$defs/span" }],
+      "required": ["title"],
+      "properties": {
+        "start": true,
+        "end": true,
+        "title": { "type": "string" },
+        "summary": { "type": "string" }
+      },
+      "unevaluatedProperties": false
+    },
+    "word": {
+      "allOf": [{ "$ref": "#/$defs/span" }],
+      "required": ["text"],
+      "properties": {
+        "start": true,
+        "end": true,
+        "text": { "type": "string" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "speaker": { "type": "string" }
+      },
+      "unevaluatedProperties": false
+    },
+    "transcript_segment": {
+      "allOf": [{ "$ref": "#/$defs/span" }],
+      "required": ["text"],
+      "properties": {
+        "start": true,
+        "end": true,
+        "text": { "type": "string" },
+        "speaker": { "type": "string" },
+        "language": { "type": "string" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "words": { "type": "array", "items": { "$ref": "#/$defs/word" } }
+      },
+      "unevaluatedProperties": false
+    },
+    "text_item": {
+      "allOf": [{ "$ref": "#/$defs/span" }],
+      "required": ["text"],
+      "properties": {
+        "start": true,
+        "end": true,
+        "text": { "type": "string" },
+        "confidence": { "$ref": "#/$defs/confidence" }
+      },
+      "unevaluatedProperties": false
+    },
+    "label": {
+      "allOf": [{ "$ref": "#/$defs/span" }],
+      "required": ["name"],
+      "properties": {
+        "start": true,
+        "end": true,
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "confidence": { "$ref": "#/$defs/confidence" }
+      },
+      "unevaluatedProperties": false
+    },
+    "box": {
+      "description": "A bounding box at one time. x, y, w, and h are fractions of the frame size, from 0 to 1. x and y are the top-left corner.",
+      "type": "object",
+      "required": ["t", "x", "y", "w", "h"],
+      "properties": {
+        "t": { "$ref": "#/$defs/seconds" },
+        "x": { "type": "number", "minimum": 0, "maximum": 1 },
+        "y": { "type": "number", "minimum": 0, "maximum": 1 },
+        "w": { "type": "number", "minimum": 0, "maximum": 1 },
+        "h": { "type": "number", "minimum": 0, "maximum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "object_track": {
+      "allOf": [{ "$ref": "#/$defs/span" }],
+      "required": ["name"],
+      "properties": {
+        "start": true,
+        "end": true,
+        "name": { "type": "string" },
+        "track_id": { "type": "string" },
+        "confidence": { "$ref": "#/$defs/confidence" },
+        "boxes": { "type": "array", "items": { "$ref": "#/$defs/box" } }
+      },
+      "unevaluatedProperties": false
+    },
+    "safety_flag": {
+      "allOf": [{ "$ref": "#/$defs/span" }],
+      "required": ["category"],
+      "properties": {
+        "start": true,
+        "end": true,
+        "category": { "type": "string" },
+        "parent_category": { "type": "string" },
+        "likelihood": { "enum": ["very_unlikely", "unlikely", "possible", "likely", "very_likely"] },
+        "confidence": { "$ref": "#/$defs/confidence" }
+      },
+      "unevaluatedProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source"],
+      "properties": {
+        "source": {
+          "description": "The tool or service that made the data, such as google-video-intelligence or ffmpeg.",
+          "type": "string"
+        },
+        "model": { "type": "string" },
+        "tracks": {
+          "description": "The top-level keys that this source filled, such as shots or transcript.",
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "created_at": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

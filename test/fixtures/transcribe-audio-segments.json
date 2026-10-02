@@ -1,0 +1,18 @@
+{
+  "jobName": "keynote-job-2",
+  "status": "COMPLETED",
+  "results": {
+    "language_code": "en-US",
+    "transcripts": [{ "transcript": "Welcome to the launch." }],
+    "items": [
+      { "id": 0, "type": "pronunciation", "alternatives": [{ "confidence": "0.99", "content": "Welcome" }], "start_time": "0.4", "end_time": "0.8", "speaker_label": "spk_0" },
+      { "id": 1, "type": "pronunciation", "alternatives": [{ "confidence": "0.98", "content": "to" }], "start_time": "0.8", "end_time": "0.9", "speaker_label": "spk_0" },
+      { "id": 2, "type": "pronunciation", "alternatives": [{ "confidence": "0.99", "content": "the" }], "start_time": "0.9", "end_time": "1.0", "speaker_label": "spk_0" },
+      { "id": 3, "type": "pronunciation", "alternatives": [{ "confidence": "0.97", "content": "launch" }], "start_time": "1.0", "end_time": "1.6", "speaker_label": "spk_0" },
+      { "id": 4, "type": "punctuation", "alternatives": [{ "confidence": "0.0", "content": "." }] }
+    ],
+    "audio_segments": [
+      { "id": 0, "transcript": "Welcome to the launch.", "start_time": "0.4", "end_time": "1.6", "speaker_label": "spk_0", "items": [0, 1, 2, 3, 4] }
+    ]
+  }
+}

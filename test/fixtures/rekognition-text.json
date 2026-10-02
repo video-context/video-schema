@@ -1,0 +1,8 @@
+{
+  "JobStatus": "SUCCEEDED",
+  "TextDetections": [
+    { "Timestamp": 8800, "TextDetection": { "DetectedText": "PRO PLAN $49", "Type": "LINE", "Id": 0, "Confidence": 99.1 } },
+    { "Timestamp": 8800, "TextDetection": { "DetectedText": "PRO", "Type": "WORD", "Id": 1, "ParentId": 0, "Confidence": 99.1 } },
+    { "Timestamp": 9800, "TextDetection": { "DetectedText": "PRO PLAN $49", "Type": "LINE", "Id": 0, "Confidence": 98.0 } }
+  ]
+}
